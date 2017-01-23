@@ -12,8 +12,9 @@ dOfs=3*tol;
 length = d1 + d2 + d3 +d4 +d5 + 4 * sep + 2*outerWall;
 
 module ridge(d) {
-    totalWidth = dOfs + tol;
-    translate([(d)/2 - (totalWidth/2 - dOfs), 0, socketH/2]) { cube([dOfs + tol, 3*tol,socketH], true);}
+    translate([(d+dOfs)/2, 0, 0]) { 
+        scale([1, 2, 1]) {cylinder(d = dOfs, h=socketH, $fn=20);}
+    }
 }
 
 module socketHolder(d) {
