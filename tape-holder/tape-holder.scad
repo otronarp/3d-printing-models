@@ -19,7 +19,7 @@ module baseSpool() {
             }
             translate([0, 0, thickness]) {cylinder(r1=spoolRadiusBase,r2=spoolRadiusTop,h=halfSpoolHeight);}
         }
-    translate([0, 0, thickness]) {cylinder(r1=spoolRadiusBase-spoolThickness,r2=spoolRadiusTop-spoolThickness,h=halfSpoolHeight);}
+    translate([0, 0, thickness-0.1]) {cylinder(r1=spoolRadiusBase-spoolThickness,r2=spoolRadiusTop-spoolThickness,h=halfSpoolHeight+0.1);}
     }
 
 }
