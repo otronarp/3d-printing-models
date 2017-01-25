@@ -14,23 +14,21 @@ module baseSpool() {
     difference() {
         union() {
             difference() {
-            cylinder(r=rimRadius,h=thickness);
-            translate([0, 0, -thickness]) { cylinder(r=spoolRadiusBase-spoolThickness, h=3*thickness); };
+                cylinder(r=rimRadius,h=thickness);
+                translate([0, 0, -thickness]) { cylinder(r=spoolRadiusBase-spoolThickness, h=3*thickness); };
             }
             translate([0, 0, thickness]) {cylinder(r1=spoolRadiusBase,r2=spoolRadiusTop,h=halfSpoolHeight);}
         }
-    translate([0, 0, thickness-0.1]) {cylinder(r1=spoolRadiusBase-spoolThickness,r2=spoolRadiusTop-spoolThickness,h=halfSpoolHeight+0.1);}
+    translate([0, 0, thickness-0.1]) {cylinder(r1=spoolRadiusBase-spoolThickness,r2=spoolRadiusTop-spoolThickness,h=halfSpoolHeight+0.11);}
     }
-
 }
 }
 
 
 
-baseSpool();
-translate([0,0,halfSpoolHeight + thickness]) {
-    difference() {
-        cylinder(r=spoolRadiusTop, h=overlap);
+difference() {
+    baseSpool();
+    translate([0,0,halfSpoolHeight + thickness-overlap]) {
         cylinder(r=spoolRadiusTop-spoolThickness/2, h=overlap+5);
     }
 }
@@ -40,7 +38,9 @@ translate([40, 0, 0]) {
     translate([0,0,halfSpoolHeight+thickness]) {
         difference() {
             cylinder(r=spoolRadiusTop-spoolThickness/2-tolerance, h=overlap);
-            cylinder(r=spoolRadiusTop-spoolThickness, h=overlap+5);
+            translate([0, 0, -2]) {
+                cylinder(r=spoolRadiusTop-spoolThickness, h=overlap+5);
+            }
         }
     }
 }
